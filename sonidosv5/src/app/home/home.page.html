@@ -1,35 +1,26 @@
+ <!-- Cabezera del titulo de los datos-->
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-title>
             Animales
         </ion-title>
+        <ion-buttons slot="primary">
+          <ion-button *ngIf="ordenando"  (click)="ordenando = false">
+            Listo
+          </ion-button>
+          <ion-button *ngIf="!ordenando"  (click)="ordenando = true">
+            Ordenar
+          </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-    <!-- Cabezera del titulo de los datos-->
-    <ion-header collapse="condense">
-        <ion-toolbar>
-            <ion-title size="large">Animales</ion-title>
-            <ion-buttons slot="primary">
-              <ion-button *ngIf="ordenando"  (click)="ordenando = false">
-                Listo
-              </ion-button>
-              <ion-button *ngIf="!ordenando"  (click)="ordenando = true">
-                Ordenar
-              </ion-button>
-            </ion-buttons>
-        </ion-toolbar>
-    </ion-header>
-
+<ion-content>
     <!-- Configurando el refresh de los datos-->
     <ion-refresher [disabled]="ordenando" slot="fixed" (ionRefresh)="recargar_animales($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
     <!-- Lista de los datos -->
-    <div id="container">
-
         <ion-list >
           <ion-reorder-group (ionItemReorder)="onRenderItems($event)" [disabled]="!ordenando">
 
@@ -57,5 +48,4 @@
           </ion-reorder-group>
 
         </ion-list>
-    </div>
 </ion-content>
