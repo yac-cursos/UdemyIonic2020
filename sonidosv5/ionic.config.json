@@ -1,0 +1,7 @@
+{
+  "name": "sonidosv5",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
